@@ -67,7 +67,7 @@ public class App {
 
       Equipo equipoUno = new Equipo(null, null);
       Equipo equipoDos = new Equipo(null, null);
-
+      int indice;
       int nroDeMatch = 0;
       // inicializo variables
       // crear una variable de tipo Equipo
@@ -80,7 +80,6 @@ public class App {
       try {
           
           scPron = new Scanner(pronosticos);
-
           while (scPron.hasNextLine()) {
               nroDeMatch++;             
               // Objetivo1, crear los objetos de la info que se encuentran en el archivo resultados.csv
@@ -89,32 +88,43 @@ public class App {
               // busco en el array de resultados ya leido
               for (Partido partido : partidosList) {
                   if(partido.getMatchNro() == nroDeMatch){
-                      pronostico.setPartido(partido);
-                      equipoUno = partido.getEquipo1();
-                      equipoDos = partido.getEquipo2();
+                    // agrego el partido al array de partidos
+                        pronosticosList.add(new Pronostico(null, null, resultado.EMPATE, 1, 0));  
+                        indice = pronosticosList.size()+1;
+                      pronosticosList.add(new Pronostico(null, null, resultado.EMPATE, 1, 0));  
+                        if(datos[1]=="X"){
+                        // si gana1 = x;      
+                        pronosticosList.get(indice).setEquipo(partido.getEquipo1());
+                        pronosticosList.get(indice).setResultadoPronosticado(resultado.GANADOR);
+                        pronosticosList.add(new Pronostico(null, null, resultado.EMPATE, 1, 0));  
+                        pronosticosList.get(indice++).setEquipo(partido.getEquipo2());
+                        pronosticosList.get(indice++).setResultadoPronosticado(resultado.PERDEDOR);         
+                        }
+    
+                        if(datos[2]=="X"){
+                        // empate = true;
+                        pronosticosList.get(indice).setEquipo(partido.getEquipo1());
+                        pronosticosList.get(indice).setResultadoPronosticado(resultado.EMPATE);
+                        pronosticosList.add(new Pronostico(null, null, resultado.EMPATE, 1, 0));  
+                        pronosticosList.get(indice++).setEquipo(partido.getEquipo2());
+                        pronosticosList.get(indice++).setResultadoPronosticado(resultado.EMPATE);         
+                        }
+                        if(datos[3]=="X"){
+                        // gana2 = true;
+                        pronosticosList.get(indice).setEquipo(partido.getEquipo2());
+                        pronosticosList.get(indice).setResultadoPronosticado(resultado.GANADOR);
+                        pronosticosList.add(new Pronostico(null, null, resultado.EMPATE, 1, 0));  
+                        pronosticosList.get(indice++).setEquipo(partido.getEquipo1());
+                        pronosticosList.get(indice++).setResultadoPronosticado(resultado.PERDEDOR);    
+                        }
+                        pronosticosList.get(indice).setMatchNro(nroDeMatch);
+                        pronosticosList.get(indice).setRondaNro(nroDeRonda);
+                        pronosticosList.get(indice++).setMatchNro(nroDeMatch);
+                        pronosticosList.get(indice++).setRondaNro(nroDeRonda);
+
                   }
               }
 
-              if(datos[1]=="X"){
-                // si gana1 = x;        
-                pronostico.setResultadoPronosticado(resultado.GANADOR);
-                pronostico.setEquipo(equipoUno);
-               }
-    
-               if(datos[2]=="X"){
-                // empate = true;
-                pronostico.setResultadoPronosticado(resultado.EMPATE);
-                pronostico.setEquipo(equipoDos);
-               }
-               if(datos[3]=="X"){
-                // gana2 = true;
-                pronostico.setResultadoPronosticado(resultado.GANADOR);
-                pronostico.setEquipo(equipoDos);
-               }
-               pronostico.setMatchNro(nroDeMatch);
-               pronostico.setRondaNro(nroDeRonda);
-                 // agrego el partido al array de partidos
-                 pronosticosList.add(pronostico);     
             }
           
           scPron.close();
