@@ -22,10 +22,8 @@ public class App {
         for (Pronostico p : pronosticosList ) {
              puntos += p.getPuntos();
         }
-        System.out.println("Puntos obtenidos: " + puntos);
-        
+        System.out.println("Puntos obtenidos: " + puntos);        
     }
-
 
     List<Partido> leerResultados() {
         // inicializo variables
@@ -33,14 +31,9 @@ public class App {
         int nroDeMatch = 0; // inicializo en 0, por def el archivo viene en orden
        // Ronda ronda = new Ronda(nroDeRonda, null);
         Scanner scResu = null;
-        // inicializo variables
-        // crear una variable de tipo Equipo
-        Equipo  equipoUno = new Equipo(null, null);
-        Equipo  equipoDos = new Equipo(null, null);
-        // creo un objeto partido con valores nulos para usarlo en el while como soporte de los datos
-        Partido partido  =  new Partido(equipoUno, equipoDos, 0, 0, nroDeRonda, nroDeMatch);
+   
         File resultados = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\resultados.csv");
-        // leer archivo resultados.cvs y lo guardo en unacoleccion de objetos Partido
+        // leer archivo resultados.cvs y lo guardo en una coleccion de objetos Partido
         List<Partido> partidosList = new ArrayList<Partido>();
         try {
             scResu = new Scanner(resultados);
@@ -49,21 +42,13 @@ public class App {
                 // Objetivo1, crear los objetos de la info que se encuentran en el archivo resultados.csv
                 String[] datos = scResu.nextLine().split(",");
                 // leo datos
-                String equipo1 = datos[0];
+
                 int    goles1  = Integer.parseInt(datos[1]);
-                String equipo2 = datos[2];
                 int    goles2  = Integer.parseInt(datos[3]);
-                // creo los objetos       
-                equipoUno.setNombre(equipo1);
-                equipoDos.setNombre(equipo2);
-                partido.setEquipo1(equipoUno);
-                partido.setEquipo2(equipoDos);
-                partido.setGolesEquipo1(goles1);
-                partido.setGolesEquipo2(goles2);
-                partido.setMatchNro(nroDeMatch);
-                partido.setRondaNro(nroDeRonda);
-              // agrego el partido al array de partidos
-                partidosList.add(partido);
+      
+                // agrego el partido al array de partidos
+
+                partidosList.add(new Partido((new Equipo(datos[0], "")), (new Equipo(datos[2], ""), goles1, goles2, nroDeRonda, nroDeMatch));
             }
             scResu.close();         
             return partidosList;
