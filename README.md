@@ -1,7 +1,6 @@
-# Trabajo Práctico Integrador
-# __Pronósticos Deportivos__
-# __Grupo 10__
-## __Datos del Presentación__
+## Trabajo Práctico Integrador
+# __Pronósticos Deportivos - Grupo 10__
+## __Datos de la Presentación__
 
 ### Fecha Entrega 1: `28 de marzo del 2023`
 ### Integrantes:  
@@ -33,10 +32,6 @@ sumarán puntos y se obtendrá un listado final.
 A continuación, se propone un diagrama de clases inicial que puede ser modificado en
 cualquier momento
 
-- Construir una Api utlizando Node, express y Mongo.
-- Afirmar y conectar los conceptos aprendidos en el TzuzulCode bootcamp.
-- Aplicar mejores prácticas.
-
 
 # __Diagrama de Clases__ 
 <br>
@@ -49,9 +44,13 @@ cualquier momento
 __ENTREGA 1:__ A partir del esquema original propuesto, desarrollar un programa que lea un archivo de
 partidos y otro de resultados, el primero correspondiente a una ronda y el otro que contenga
 los pronósticos de una persona1. Cada ronda debe tener una cantidad fija de partidos.
-<br>
+<br> <br>
 __Se considera una única ronda y un único participante en esta entrega__
 <br>
+# __Diagrama de Clases Aumentado__ 
+<p align="center">
+  <img  src="./assets/dibujo1.jpg" />
+</p>
 
 
 

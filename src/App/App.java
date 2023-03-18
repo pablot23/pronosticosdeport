@@ -8,13 +8,14 @@ import java.util.List;
 
 public class App {
 
-    public static List<Partido> partidosList = new ArrayList<Partido>();
-    public static List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
+    // public  List<Partido> partidosList = new ArrayList<Partido>();
+   // public  List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
 
-    public static void main(String[] args) throws Exception {
+    public void main(String[] args) throws Exception {
 
         // Leo los resultados y obtengo un array de los pronosticos
-        pronosticosList = leerPronosticos(leerResultados());
+        List<Partido> partidosList = leerResultados();
+        List<Pronostico> pronosticosList = leerPronosticos(partidosList);
         
         // Calculo los puntos
         int puntos= 0;
@@ -25,14 +26,12 @@ public class App {
     }
 
 
-    public static List<Partido> leerResultados() {
+    List<Partido> leerResultados() {
         // inicializo variables
         int nroDeRonda = 1;
         int nroDeMatch = 0;
         Ronda ronda = new Ronda(nroDeRonda, null);
         Scanner scResu = null;
-
-
 
         // inicializo variables
         // crear una variable de tipo Equipo
@@ -44,7 +43,7 @@ public class App {
         File resultados = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\resultados.csv");
 
         // leer archivo resultados.cvs
-
+        List<Partido> partidosList = new ArrayList<Partido>();
         try {
             scResu = new Scanner(resultados);
             while (scResu.hasNextLine()) {
@@ -82,10 +81,7 @@ public class App {
 
     } 
 
-
-
-
-    public static List<Pronostico> leerPronosticos(List<Partido> partidosList) {
+    List<Pronostico> leerPronosticos(List<Partido> partidosList) {
 
       // inicializo variables
       int nroDeRonda = 1;
@@ -103,7 +99,7 @@ public class App {
       Pronostico pronostico = new Pronostico(null, null, null);
       File pronosticos = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\pronosticos.csv");
       Scanner scPron = null;        
-
+      List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
       try {
           
           scPron = new Scanner(pronosticos);
@@ -146,7 +142,7 @@ public class App {
                 pronosticosList.add(pronostico);
           }
           scPron.close();
-          return pronosticosList;  
+        return pronosticosList;  
 
       } catch (FileNotFoundException e) {
           e.printStackTrace();
