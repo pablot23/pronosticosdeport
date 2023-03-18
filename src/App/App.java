@@ -11,7 +11,7 @@ public class App {
     // public  List<Partido> partidosList = new ArrayList<Partido>();
    // public  List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
 
-    public  void main(String[] args) throws Exception {
+    public static  void main(String[] args) throws Exception {
 
         // Leo los resultados y obtengo un array de los pronosticos
         List<Partido> partidosList = leerResultados();
@@ -25,7 +25,7 @@ public class App {
         System.out.println("Puntos obtenidos: " + puntos);        
     }
 
-    List<Partido> leerResultados() {
+    static List<Partido> leerResultados() {
         // inicializo variables
         int nroDeRonda = 1; 
         int nroDeMatch = 0; // inicializo en 0, por def el archivo viene en orden
@@ -47,8 +47,8 @@ public class App {
                 int    goles2  = Integer.parseInt(datos[3]);
       
                 // agrego el partido al array de partidos
-
-                partidosList.add(new Partido((new Equipo(datos[0], "")), (new Equipo(datos[2], ""), goles1, goles2, nroDeRonda, nroDeMatch));
+            
+                partidosList.add(new Partido(new Equipo(datos[0], ""), new Equipo(datos[2], ""), goles1, goles2, nroDeRonda, nroDeMatch));
             }
             scResu.close();         
             return partidosList;
@@ -58,7 +58,7 @@ public class App {
         } 
     } 
 
-    List<Pronostico> leerPronosticos(List<Partido> partidosList) {
+    static List<Pronostico> leerPronosticos(List<Partido> partidosList) {
 
       // inicializo variables
       int nroDeRonda = 1;
@@ -73,30 +73,27 @@ public class App {
       // crear una variable de tipo Equipo
 
 
-      Pronostico pronostico = new Pronostico(null, null, null, "", 0);
+      Pronostico pronostico = new Pronostico(null, null, null, nroDeRonda, 0);
       File pronosticos = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\pronosticos.csv");
       Scanner scPron = null;        
       List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
       try {
           
           scPron = new Scanner(pronosticos);
+
           while (scPron.hasNextLine()) {
               nroDeMatch++;             
               // Objetivo1, crear los objetos de la info que se encuentran en el archivo resultados.csv
               String[] datos = scPron.nextLine().split(",");
-              // leo datos
-              String equipo1 = datos[0]; 
-              String equipo2 = datos[4];
 
               // busco en el array de resultados ya leido
               for (Partido partido : partidosList) {
-                  if(partido.getEquipo1().getNombre().equals(equipo1) && partido.getEquipo2().getNombre().equals(equipo2)){
+                  if(partido.getMatchNro() == nroDeMatch){
                       pronostico.setPartido(partido);
                       equipoUno = partido.getEquipo1();
                       equipoDos = partido.getEquipo2();
                   }
-              }  
-
+              }
 
               if(datos[1]=="X"){
                 // si gana1 = x;        
@@ -114,12 +111,14 @@ public class App {
                 pronostico.setResultadoPronosticado(resultado.GANADOR);
                 pronostico.setEquipo(equipoDos);
                }
-
-            // agrego el partido al array de partidos
-                pronosticosList.add(pronostico);
-          }
+               pronostico.setMatchNro(nroDeMatch);
+               pronostico.setRondaNro(nroDeRonda);
+                 // agrego el partido al array de partidos
+                 pronosticosList.add(pronostico);     
+            }
+          
           scPron.close();
-        return pronosticosList;  
+          return pronosticosList;  
 
       } catch (FileNotFoundException e) {
           e.printStackTrace();

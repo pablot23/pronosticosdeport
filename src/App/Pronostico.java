@@ -1,7 +1,7 @@
 package App;
 
 public class Pronostico {
-    private String rondaNro;
+    private int rondaNro;
     private int matchNro; 
     private Partido partido;
     private Equipo equipo;
@@ -9,7 +9,7 @@ public class Pronostico {
 
 
 
-    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultadoPronosticado, String rondaNro, int matchNro ) {
+    public Pronostico(Partido partido, Equipo equipo, ResultadoEnum resultadoPronosticado, int rondaNro, int matchNro ) {
         this.partido = partido;
         this.equipo = equipo;
         this.resultadoPronosticado = resultadoPronosticado;
@@ -36,6 +36,12 @@ public class Pronostico {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+    public void setRondaNro(int rondaNro) {
+        this.rondaNro = rondaNro;
+    }
+    public void setMatchNro(int matchNro) {
+        this.matchNro = matchNro;
+    }
     
     public Partido getPartido() {
         return this.partido;
@@ -43,13 +49,16 @@ public class Pronostico {
     public Equipo getEquipo() {
         return this.equipo;
     }
+    
+
+
     public ResultadoEnum getResultadoPronosticado() {
         return this.resultadoPronosticado;
     } 
     public void setResultadoPronosticado(ResultadoEnum resultadoPronosticado) {
         this.resultadoPronosticado = resultadoPronosticado;
     }
-    public String getRonda() {
+    public int getRonda() {
         return this.rondaNro;
     }
     public int getMatchNro() {

@@ -4,12 +4,12 @@ import java.util.List;
 
 
 public class Partido {
-    private int rondaNro;
-    private int matchNro; 
     private Equipo equipo1;
     private Equipo equipo2;
     private int golesEquipo1;
     private int golesEquipo2;
+    private int rondaNro;
+    private int matchNro; 
    
 
     public Partido(Equipo equipoUno, Equipo equipoDos, int goles1, int goles2, int  rondaNro, int matchNro) {
