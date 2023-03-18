@@ -23,6 +23,7 @@ public class App {
              puntos += p.getPuntos();
         }
         System.out.println("Puntos obtenidos: " + puntos);
+        
     }
 
 
@@ -32,17 +33,13 @@ public class App {
         int nroDeMatch = 0;
         Ronda ronda = new Ronda(nroDeRonda, null);
         Scanner scResu = null;
-
         // inicializo variables
         // crear una variable de tipo Equipo
-
         Equipo  equipoUno = new Equipo(null, null);
         Equipo  equipoDos = new Equipo(null, null);
         Partido partido  =  new Partido(equipoUno, equipoDos, 0, 0, ronda, nroDeMatch);
-    
         File resultados = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\resultados.csv");
-
-        // leer archivo resultados.cvs
+        // leer archivo resultados.cvs y lo guardo en unacoleccion de objetos Partido
         List<Partido> partidosList = new ArrayList<Partido>();
         try {
             scResu = new Scanner(resultados);
@@ -55,9 +52,7 @@ public class App {
                 int    goles1  = Integer.parseInt(datos[1]);
                 String equipo2 = datos[2];
                 int    goles2  = Integer.parseInt(datos[3]);
-  
-                // creo los objetos
-               
+                // creo los objetos       
                 equipoUno.setNombre(equipo1);
                 equipoDos.setNombre(equipo2);
                 partido.setEquipo1(equipoUno);
@@ -65,20 +60,16 @@ public class App {
                 partido.setGolesEquipo1(goles1);
                 partido.setGolesEquipo2(goles2);
                 partido.setMatchNro(nroDeMatch);
-                
-    
+                partido.setRonda(ronda);
               // agrego el partido al array de partidos
                 partidosList.add(partido);
-
             }
-            scResu.close();
-            
+            scResu.close();         
             return partidosList;
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+            return null;
         } 
-
     } 
 
     List<Pronostico> leerPronosticos(List<Partido> partidosList) {
@@ -146,6 +137,7 @@ public class App {
 
       } catch (FileNotFoundException e) {
           e.printStackTrace();
+          return null;
       } 
 
     }

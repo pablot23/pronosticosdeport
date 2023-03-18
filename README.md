@@ -1,5 +1,6 @@
 ## Trabajo Práctico Integrador
-# __Pronósticos Deportivos - Grupo 10__
+# __Pronósticos Deportivos__ 
+## ___Grupo 10___
 ## __Datos de la Presentación__
 
 ### Fecha Entrega 1: `28 de marzo del 2023`
@@ -49,7 +50,7 @@ __Se considera una única ronda y un único participante en esta entrega__
 <br>
 # __Diagrama de Clases Aumentado__ 
 <p align="center">
-  <img  src="./assets/dibujo1.jpg" />
+  <img  src="./assets/Dibujo1.jpg" />
 </p>
 
 
