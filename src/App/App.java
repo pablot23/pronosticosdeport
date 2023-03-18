@@ -11,7 +11,7 @@ public class App {
     // public  List<Partido> partidosList = new ArrayList<Partido>();
    // public  List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
 
-    public void main(String[] args) throws Exception {
+    public  void main(String[] args) throws Exception {
 
         // Leo los resultados y obtengo un array de los pronosticos
         List<Partido> partidosList = leerResultados();
@@ -29,7 +29,7 @@ public class App {
 
     List<Partido> leerResultados() {
         // inicializo variables
-        String nroDeRonda = "1"; // por definición 
+        int nroDeRonda = 1; 
         int nroDeMatch = 0; // inicializo en 0, por def el archivo viene en orden
        // Ronda ronda = new Ronda(nroDeRonda, null);
         Scanner scResu = null;
@@ -77,7 +77,7 @@ public class App {
 
       // inicializo variables
       int nroDeRonda = 1;
-      Ronda ronda = new Ronda(nroDeRonda, null);
+   //   Ronda ronda = new Ronda(nroDeRonda, null);
       ResultadoEnum resultado = null;
 
       Equipo equipoUno = new Equipo(null, null);
@@ -88,7 +88,7 @@ public class App {
       // crear una variable de tipo Equipo
 
 
-      Pronostico pronostico = new Pronostico(null, null, null);
+      Pronostico pronostico = new Pronostico(null, null, null, "", 0);
       File pronosticos = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\pronosticos.csv");
       Scanner scPron = null;        
       List<Pronostico> pronosticosList = new ArrayList<Pronostico>();

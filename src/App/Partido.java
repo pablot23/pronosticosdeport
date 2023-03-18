@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public class Partido {
-    private String rondaNro;
+    private int rondaNro;
     private int matchNro; 
     private Equipo equipo1;
     private Equipo equipo2;
@@ -12,7 +12,7 @@ public class Partido {
     private int golesEquipo2;
    
 
-    public Partido(Equipo equipoUno, Equipo equipoDos, int goles1, int goles2, String  rondaNro, int matchNro) {
+    public Partido(Equipo equipoUno, Equipo equipoDos, int goles1, int goles2, int  rondaNro, int matchNro) {
         this.equipo1 = equipoUno;
         this.equipo2 = equipoDos;
         this.golesEquipo1 = goles1;
@@ -44,7 +44,7 @@ public class Partido {
     public int getMatchNro() {
         return this.matchNro;
     }
-    public String getRondaNro() {
+    public int getRondaNro() {
         return this.rondaNro;
     }
     public Equipo getEquipo1() {
@@ -75,7 +75,7 @@ public class Partido {
         this.matchNro = nro;
     }
 
-    public void setRondaNro(String rondaNro) {
+    public void setRondaNro(int rondaNro) {
         this.rondaNro = rondaNro;
     }
 
