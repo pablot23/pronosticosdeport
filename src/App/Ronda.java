@@ -1,20 +1,20 @@
 package App;
 public class Ronda {
-    private int nro;
+    private String nro;
     private Partido[] partidos;
 
-    public Ronda(int nro, Partido[] partidos) {
+    public Ronda(String  nro, Partido[] partidos) {
         this.nro = nro;
         this.partidos = partidos;
     }
-    public int getNro() {
+    public String getNro() {
         return this.nro;
     }
     public Partido[] getPartidos() {
         return this.partidos;
     }
     
-    public void setNro(int nro) {
+    public void setNro(String nro) {
         this.nro = nro;
     }
     public void setPartidos(Partido[] partidos) {

@@ -29,15 +29,16 @@ public class App {
 
     List<Partido> leerResultados() {
         // inicializo variables
-        int nroDeRonda = 1;
-        int nroDeMatch = 0;
-        Ronda ronda = new Ronda(nroDeRonda, null);
+        String nroDeRonda = "1"; // por definición 
+        int nroDeMatch = 0; // inicializo en 0, por def el archivo viene en orden
+       // Ronda ronda = new Ronda(nroDeRonda, null);
         Scanner scResu = null;
         // inicializo variables
         // crear una variable de tipo Equipo
         Equipo  equipoUno = new Equipo(null, null);
         Equipo  equipoDos = new Equipo(null, null);
-        Partido partido  =  new Partido(equipoUno, equipoDos, 0, 0, ronda, nroDeMatch);
+        // creo un objeto partido con valores nulos para usarlo en el while como soporte de los datos
+        Partido partido  =  new Partido(equipoUno, equipoDos, 0, 0, nroDeRonda, nroDeMatch);
         File resultados = new File("C:\\Users\\Willy\\Desktop\\TrabajoPrácticoIntegrador\\PronosticosDeportivos\\PronDep\\resultados.csv");
         // leer archivo resultados.cvs y lo guardo en unacoleccion de objetos Partido
         List<Partido> partidosList = new ArrayList<Partido>();
@@ -60,7 +61,7 @@ public class App {
                 partido.setGolesEquipo1(goles1);
                 partido.setGolesEquipo2(goles2);
                 partido.setMatchNro(nroDeMatch);
-                partido.setRonda(ronda);
+                partido.setRondaNro(nroDeRonda);
               // agrego el partido al array de partidos
                 partidosList.add(partido);
             }
