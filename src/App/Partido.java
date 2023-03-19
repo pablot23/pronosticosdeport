@@ -16,29 +16,21 @@ public class Partido {
         this.equipo1 = equipoUno;
         this.equipo2 = equipoDos;
         this.golesEquipo1 = goles1;
-        this.golesEquipo1 = goles2; 
+        this.golesEquipo2 = goles2; 
         this.rondaNro = rondaNro;
         this.matchNro = matchNro;
     }
 
-    public ResultadoEnum getResultado(Equipo equipo) {
+    public int getGana() {
 
         if (this.golesEquipo1 > this.golesEquipo2) {
-            if (this.equipo1 == equipo) {
-                return ResultadoEnum.GANADOR;
-            } else {
-                return ResultadoEnum.PERDEDOR;
-            }
-        } else if (this.golesEquipo1 < this.golesEquipo2) {
-            if (this.equipo2 == equipo) {
-                return ResultadoEnum.GANADOR;
-            } else {
-                return ResultadoEnum.PERDEDOR;
-            }
-        } else {
-            return ResultadoEnum.EMPATE;
+            return this.equipo1.getId();
         }
-
+        if (this.golesEquipo1 < this.golesEquipo2) {
+            return this.equipo2.getId();
+        } 
+           return 0;
+        
     }
     
     public int getMatchNro() {

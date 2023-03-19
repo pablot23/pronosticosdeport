@@ -17,19 +17,21 @@ public class Pronostico {
         this.matchNro = matchNro;
 
     }
-    public int getPuntos() {
-        int puntos = 0;
-        if (partido.getResultado(equipo) == ResultadoEnum.GANADOR) {
-            puntos = 1;
+    public double getPuntos() {
+        double puntos = 0;
+        if (partido.getGana() == this.equipo.getId() && this.resultadoPronosticado == ResultadoEnum.GANADOR){
+            puntos = 0.5;
         }
-        if (partido.getResultado(equipo) == ResultadoEnum.PERDEDOR) {
-            puntos = 0;
+        if (partido.getGana() != this.equipo.getId() && this.resultadoPronosticado == ResultadoEnum.PERDEDOR){
+            puntos =   0.5;
+            }
+        if (partido.getGana() == 0 && this.resultadoPronosticado == ResultadoEnum.EMPATE){
+             puntos = 0.5;
         }
-        if (partido.getResultado(equipo) == ResultadoEnum.EMPATE) {
-            puntos = 1;
-        }
+
         return puntos;
-    }
+        }
+
     public void setPartido(Partido partido) {
         this.partido = partido;
     }
@@ -49,9 +51,6 @@ public class Pronostico {
     public Equipo getEquipo() {
         return this.equipo;
     }
-    
-
-
     public ResultadoEnum getResultadoPronosticado() {
         return this.resultadoPronosticado;
     } 
@@ -64,6 +63,5 @@ public class Pronostico {
     public int getMatchNro() {
         return this.matchNro;
     }
-
 }
 
