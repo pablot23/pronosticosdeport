@@ -3,7 +3,7 @@
 ## ___Grupo 10___
 ## __Datos de la Presentación__
 
-### Fecha Entrega 1: `28 de marzo del 2023`
+### Fecha Entrega 1: `4 de abril del 2023 (clase 12)`
 ### Integrantes:  
 * __`Guillermo Escobar`__
 * __`Norma Ramirez`__
