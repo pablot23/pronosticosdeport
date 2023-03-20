@@ -8,7 +8,7 @@ import java.util.List;
 
 public class App {
 
-    //public  List<Partido> partidosList = new ArrayList<Partido>();
+    // public  List<Partido> partidosList = new ArrayList<Partido>();
     // public  List<Pronostico> pronosticosList = new ArrayList<Pronostico>();
 
     public static  void main(String[] args) throws Exception {
@@ -23,7 +23,7 @@ public class App {
             for (Pronostico p : pronosticosList ) {
                 puntos = puntos + p.getPuntos();
             }
-            System.out.println("Puntos obtenidos: " + puntos);  
+            System.out.println("Puntos obtenidos: " + String.valueOf(Math.round(puntos)));  
         }else{
             System.out.println("No se pudo leer el archivo de pronosticos");
         }
@@ -106,7 +106,7 @@ public class App {
           String empata;
           String  gana2;
           int id_equip2;
-            int indice = 0;
+          int indice = 0;
           //preparo 2 variables auxiliares para crear los objetos de los equipos
           String[] datos;
           while (scPron.hasNextLine()) {
